@@ -1,3 +1,11 @@
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import './index.css'   // ← 여기서만 불러옵니다
+
+ReactDOM.createRoot(document.getElementById('root')!).render(<App />)
+
+
 // src/main.tsx
 import React from "react";
 import ReactDOM from "react-dom/client";
