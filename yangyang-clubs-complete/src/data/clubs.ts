@@ -15,13 +15,13 @@ export type Club = {
 export const clubs: Club[] = [
   {
     slug: "pooksurfer",
-    name: { ko: "푹서퍼 서핑클럽", en: "Pook Surfers" },
-    area: { ko: "양양군 전역(서피비치·인구·죽도)", en: "Across Yangyang (Surfyy/Ingwoo/Jukdo)" },
-    members: 58,
-    tags: ["서핑","바다 러닝","환경수거"],
+    name: { ko: "동호문화기획단", en: "Pook Surfers" },
+    area: { ko: "양양 동호해변 중심으로 활동)", en: "Across Yangyang (Surfyy/Ingwoo/Jukdo)" },
+    members: 10,
+    tags: ["서핑","러닝","비치클린"],
     cover: asset("clubs-outdoor.jpg"),
     desc: {
-      ko: "양양의 대표 서핑 커뮤니티. 주간 정기서핑, 바다 러닝, 비치클린과 초보자 환영 세션 운영.",
+      ko: "양양 동호 대표 커뮤니티. 주말 정기 러닝, 서핑, 비치클린, 팜투테이블, 요가등 다채로운 프로그램 운영.",
       en: "Yangyang’s surf community. Weekly sessions, ocean runs, beach clean-ups, beginner-friendly."
     },
     links: { instagram: "#", email: "yyfarmct@naver.com" },
@@ -30,8 +30,8 @@ export const clubs: Club[] = [
   {
     slug: "muaz-crochet",
     name: { ko: "무아뜨경(코바늘·새활용)", en: "Muaz Crochet (Upcycle)" },
-    area: { ko: "양양읍·손양면", en: "Yangyang-eup · Sonyang-myeon" },
-    members: 25,
+    area: { ko: "양양에서 속초까지", en: "Yangyang-eup · Sonyang-myeon" },
+    members: 3,
     tags: ["업사이클","ESG","핸드메이드"],
     cover: asset("muaz-crochet-outdoor.jpg"),
     desc: {
@@ -45,7 +45,7 @@ export const clubs: Club[] = [
     slug: "ukulele",
     name: { ko: "우쿨렐레 합주", en: "Ukulele Ensemble" },
     area: { ko: "양양읍", en: "Yangyang-eup" },
-    members: 18,
+    members: 14,
     tags: ["음악","공연"],
     cover: asset("ukulele-ensemble.jpg"),
     desc: {
@@ -58,7 +58,7 @@ export const clubs: Club[] = [
     slug: "beautiful-guitar",
     name: { ko: "아름다운 통기타 세상", en: "Beautiful Guitar World" },
     area: { ko: "서면", en: "Seomyeon" },
-    members: 21,
+    members: 10,
     tags: ["음악","기타","공연"],
     cover: asset("beautiful-guitar-world.jpg"),
     desc: {
@@ -70,7 +70,7 @@ export const clubs: Club[] = [
     slug: "drawing-yangyang",
     name: { ko: "야양그림", en: "Drawing Yangyang" },
     area: { ko: "구석구석 양양", en: "Every corner of Yangyang" },
-    members: 16,
+    members: 17,
     tags: ["드로잉","야외스케치"],
     cover: asset("drawing-yangyang.jpg"),
     desc: {
