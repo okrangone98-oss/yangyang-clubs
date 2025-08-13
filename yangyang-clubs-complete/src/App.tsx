@@ -9,7 +9,7 @@ import { GALLERY } from './data/gallery'
 const t = {
   ko: {
     siteName: '양양 동아리 소개',
-    tagline: '바다·숲·사람과과 함께 만드는 로컬 커뮤니티',
+    tagline: '바다·숲·사람과 함께 만드는 로컬 커뮤니티',
     heroCta: '동아리 보기',
     searchPlaceholder: '동아리 이름, 키워드 검색',
     filters: '필터',
