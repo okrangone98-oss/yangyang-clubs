@@ -35,7 +35,7 @@ export const clubs: Club[] = [
     tags: ["함께해요 의기양양 동아리"],
     cover: asset("muaz-crochet-outdoor.jpg"),
     desc: {
-      ko: "코바늘·직조로 생활소품을 만드는 업사이클 동아리. 장날 체험부스 운영.",
+      ko: "코바늘·직조로 생활소품을 만드는 뜨개+청년+연결 동아리.",
       en: "Upcycling group crafting daily goods with crochet & weaving. Pop-up booth on market days."
     },
     links: { email: "yyfarmct@naver.com" },
@@ -49,7 +49,7 @@ export const clubs: Club[] = [
     tags: ["음악","공연"],
     cover: asset("ukulele-ensemble.jpg"),
     desc: {
-      ko: "근린 공원과 마을행사에서 정기 합주와 공연을 진행합니다.",
+      ko: "학교 및 지역 마을 행사에서 합주와 공연을 진행합니다.",
       en: "Regular ensemble and small gigs at local parks and festivals."
     },
     gallery: [asset("ukulele-ensemble.jpg"), asset("beautiful-guitar-world.jpg")]
@@ -74,7 +74,7 @@ export const clubs: Club[] = [
     tags: ["드로잉","야외스케치"],
     cover: asset("drawing-yangyang.jpg"),
     desc: {
-      ko: "야외 스케치와 전시 프로젝트를 진행합니다.",
+      ko: "양양의 스토리를 담은 그림, 스케치, 전시 프로젝트를 진행합니다.",
       en: "Outdoor sketch sessions and small exhibitions."
     },
     gallery: [asset("drawing-yangyang.jpg"), asset("dure-workshop-2025-07.jpg")]
