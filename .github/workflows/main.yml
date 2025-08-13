@@ -15,35 +15,30 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  WORKDIR: yangyang-clubs-complete
+  WORKDIR: yangyang-clubs-complete  # 프로젝트 폴더명 (다르면 수정)
 
 jobs:
   build:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
-        with: { node-version: 20 }
-      - name: Install
-        working-directory: ./${{ env.WORKDIR }}
-        run: npm ci || npm i
-      - name: Build
-        working-directory: ./${{ env.WORKDIR }}
-        run: npm run build
-      - uses: actions/upload-pages-artifact@v3
-        with: { path: ./${{ env.WORKDIR }}/dist }
+        with:
+          node-version: 20
 
       - name: Install dependencies
-        working-directory: ./${{ env.WORKDIR }}     # ← 하위 폴더에서 실행
+        working-directory: ./${{ env.WORKDIR }}
         run: npm ci || npm i
 
       - name: Build
-        working-directory: ./${{ env.WORKDIR }}     # ← 하위 폴더에서 실행
+        working-directory: ./${{ env.WORKDIR }}
         run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./${{ env.WORKDIR }}/dist           # ← 빌드 산출물 경로
+          path: ./${{ env.WORKDIR }}/dist
 
   deploy:
     needs: build
