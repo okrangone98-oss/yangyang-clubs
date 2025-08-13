@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { clubMap } from "../data/clubs";
 import { LangContext } from "../App";
+import Gallery from "../components/Gallery";
 
 export default function ClubDetail() {
   const { slug }  = useParams();
@@ -19,6 +20,10 @@ export default function ClubDetail() {
       <p className="text-gray-600">{club.area[lang]} · {club.members} {lang==="ko"?"명":"members"}</p>
       <div className="mt-4 leading-7 whitespace-pre-wrap">{club.desc[lang]}</div>
 
+      {/* 이미지 갤러리 */}
+      <Gallery images={club.gallery ?? []} />
+
+      {/* 링크 */}
       <div className="mt-6 flex gap-3 flex-wrap">
         {club.links?.instagram && (
           <a className="px-3 py-1 rounded-full border" target="_blank" rel="noreferrer" href={club.links.instagram}>Instagram</a>
