@@ -16,7 +16,7 @@ export const clubs: Club[] = [
   {
     slug: "pooksurfer",
     name: { ko: "동호문화기획단", en: "Pook Surfers" },
-    area: { ko: "양양 동호해변 중심으로 활동)", en: "Across Yangyang (Surfyy/Ingwoo/Jukdo)" },
+    area: { ko: "양양 동호해변 중심으로 활동", en: "Across Yangyang (Surfyy/Ingwoo/Jukdo)" },
     members: 10,
     tags: ["서핑","러닝","비치클린"],
     cover: asset("clubs-outdoor.jpg"),
