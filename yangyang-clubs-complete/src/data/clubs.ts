@@ -104,7 +104,7 @@ export const heroSlides = [
     subtitle_ko: "당신과 함께 할 양양 공동체",
     subtitle_en: "Weekly meetups, outdoor events, gigs and pop-ups. Join a welcoming community.",
     ctaHref: "#/club/pooksurfer",
-    ctaLabel_ko: "서핑클럽 보기", ctaLabel_en: "View Surf Club"
+    ctaLabel_ko: "자세히 보기", ctaLabel_en: "View Surf Club"
   },
   {
     image: asset("dure-workshop-2025-07.jpg"),
