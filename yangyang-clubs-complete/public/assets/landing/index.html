@@ -1,1 +1,176 @@
-https://okrangone98-oss.github.io/yangyang-clubs/landing/
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Clubs of Yangyang</title>
+  <meta name="description" content="양양의 동아리/커뮤니티를 한 곳에서 찾고 참여하세요. (KR/EN)" />
+  <style>
+    :root {
+      --bg:#ffffff; --text:#111827; --muted:#6b7280;
+      --line:#e5e7eb; --brand:#0ea5e9; --chip:#f3f4f6;
+    }
+    *{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans KR',sans-serif}
+    a{color:inherit}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    header{display:flex;gap:12px;align-items:center;justify-content:space-between}
+    .title{font-size:26px;font-weight:700}
+    .lang{display:flex;gap:8px}
+    .btn{border:1px solid var(--line);background:#fff;padding:8px 12px;border-radius:9999px;cursor:pointer}
+    .btn.active{background:var(--text);color:#fff;border-color:var(--text)}
+    .sub{color:var(--muted);margin:14px 0 6px}
+    .tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:10px 0 20px}
+    input[type="search"]{padding:10px 12px;border:1px solid var(--line);border-radius:10px;min-width:240px}
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(1,minmax(0,1fr))}
+    @media (min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (min-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}}
+    .card{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+    .thumb{width:100%;height:180px;object-fit:cover;background:#fafafa}
+    .body{padding:14px 14px 16px}
+    .name{font-weight:700;font-size:18px;margin:0 0 4px}
+    .meta{color:var(--muted);font-size:13px;margin:0 0 10px}
+    .desc{font-size:14px;margin:0 0 10px}
+    .tags{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 10px}
+    .chip{background:var(--chip);border:1px solid var(--line);padding:2px 8px;border-radius:9999px;font-size:12px}
+    .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+    .linkbtn{display:inline-block;border:1px solid var(--line);padding:8px 10px;border-radius:10px;text-decoration:none}
+    footer{margin:28px 0 10px;color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">Clubs of Yangyang</div>
+      <div class="lang">
+        <button class="btn active" id="btnKO">KO</button>
+        <button class="btn" id="btnEN">EN</button>
+      </div>
+    </header>
+
+    <p class="sub" id="intro">양양의 동아리/커뮤니티를 한 곳에서 찾고 참여하세요.</p>
+
+    <div class="tools">
+      <input id="search" type="search" placeholder="검색: 이름/태그/설명" />
+      <span class="sub" id="count"></span>
+    </div>
+
+    <section class="grid" id="grid" aria-live="polite"></section>
+
+    <footer>
+      사진은 <code>/yangyang-clubs/assets/</code>에 영문 파일명으로 업로드해주세요.
+      · Theme-free minimal page (KR/EN) · Maintained on GitHub Pages.
+    </footer>
+  </div>
+
+  <script>
+    // 이 값은 "리포지토리 이름"입니다. 바꾸지 마세요.
+    const REPO_BASE = '/yangyang-clubs';
+
+    // === 데이터(여기만 고치면 콘텐츠가 바뀝니다) ==========================
+    const CLUBS = [
+      {
+        id: 'pooksurfer',
+        name_ko: '푹서퍼 서핑클럽',
+        name_en: 'Pooksurfer Surf Club',
+        members: 58,
+        area_ko: '양양군 전역(서피비치·인구·죽도)',
+        area_en: 'Across Yangyang (Surfyy, Ingu, Jukdo)',
+        summary_ko: '양양의 대표 서핑 커뮤니티. 주간 정기서핑, 바다 러닝, 비치클린과 초보자 환영 세션을 운영합니다.',
+        summary_en: 'Signature surfing community in Yangyang. Weekly surf, ocean runs, beach cleanups, beginner friendly.',
+        tags: ['서핑','바다 러닝','환경수거'],
+        image: `${REPO_BASE}/assets/clubs-outdoor.jpg`,
+        alt_ko: '잔디 위에서 모인 서핑 동아리',
+        alt_en: 'Surf club members gathering on the grass',
+        links: [
+          { label: 'Instagram', href: 'https://instagram.com', target:'_blank' },
+          { label: 'Email', href: 'mailto:hello@example.com' }
+        ]
+      },
+      {
+        id: 'muaz',
+        name_ko: '무아뜨경(코바늘·새활용)',
+        name_en: 'MuaTtGyeong (Crochet & Upcycling)',
+        members: 25,
+        area_ko: '양양읍·손양면',
+        area_en: 'Yangyang-eup · Sonyang-myeon',
+        summary_ko: '코바늘·직조로 생활소품을 만드는 업사이클 동아리. 장날 체험부스를 운영합니다.',
+        summary_en: 'Upcycling club making goods via crochet and weaving. Hands-on booth on market days.',
+        tags: ['업사이클','ESG','핸드메이드'],
+        image: `${REPO_BASE}/assets/muaz-crochet.jpg`,
+        alt_ko: '코바늘 작업 장면',
+        alt_en: 'Crochet working scene',
+        links: [{ label:'Email', href:'mailto:hello@example.com' }]
+      },
+      {
+        id: 'ukulele',
+        name_ko: '아름다운 통기타 세상',
+        name_en: 'Beautiful Guitar World',
+        members: 20,
+        area_ko: '양양군',
+        area_en: 'Yangyang-gun',
+        summary_ko: '지역 공연과 버스킹을 준비하는 기타·우쿨렐레 커뮤니티.',
+        summary_en: 'Guitar & ukulele community performing and busking around town.',
+        tags: ['음악','버스킹'],
+        image: `${REPO_BASE}/assets/ukulele-ensemble.jpg`,
+        alt_ko: '우쿨렐레 합주 모습',
+        alt_en: 'Ukulele ensemble performance',
+        links: []
+      }
+    ];
+    // =====================================================================
+
+    const grid = document.getElementById('grid');
+    const search = document.getElementById('search');
+    const intro = document.getElementById('intro');
+    const count = document.getElementById('count');
+    const btnKO = document.getElementById('btnKO');
+    const btnEN = document.getElementById('btnEN');
+
+    let lang = 'ko';
+    btnKO.onclick = () => setLang('ko');
+    btnEN.onclick = () => setLang('en');
+
+    search.addEventListener('input', render);
+
+    function setLang(l) {
+      lang = l;
+      btnKO.classList.toggle('active', l==='ko');
+      btnEN.classList.toggle('active', l==='en');
+      intro.textContent = l==='ko'
+        ? '양양의 동아리/커뮤니티를 한 곳에서 찾고 참여하세요.'
+        : 'Find and join Yangyang’s clubs and communities.';
+      search.placeholder = l==='ko' ? '검색: 이름/태그/설명' : 'Search: name/tags/summary';
+      render();
+    }
+
+    function render() {
+      const q = (search.value || '').toLowerCase().trim();
+      const list = !q ? CLUBS : CLUBS.filter(c => {
+        const hay = `${c.name_ko} ${c.name_en} ${c.summary_ko} ${c.summary_en} ${c.tags.join(' ')}`.toLowerCase();
+        return hay.includes(q);
+      });
+      count.textContent = lang==='ko' ? `총 ${list.length}개 동아리` : `${list.length} clubs`;
+
+      grid.innerHTML = list.map(c => `
+        <article class="card">
+          <img class="thumb" src="${c.image}" alt="${lang==='ko' ? c.alt_ko : c.alt_en}">
+          <div class="body">
+            <h3 class="name">${lang==='ko' ? c.name_ko : c.name_en}</h3>
+            <p class="meta">${lang==='ko'
+              ? `${c.members} 명 · ${c.area_ko}`
+              : `${c.members} members · ${c.area_en}`}</p>
+            <p class="desc">${lang==='ko' ? c.summary_ko : c.summary_en}</p>
+            <div class="tags">${c.tags.map(t => `<span class="chip">#${t}</span>`).join('')}</div>
+            <div class="links">
+              ${(c.links||[]).map(l => `<a class="linkbtn" href="${l.href}" target="${l.target||''}" rel="noreferrer">${l.label}</a>`).join('')}
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    setLang('ko'); // 초기 언어
+  </script>
+</body>
+</html>
+
