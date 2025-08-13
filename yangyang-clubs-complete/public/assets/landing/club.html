@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Club Detail</title>
+  <style>
+    :root { --bg:#ffffff; --text:#111827; --muted:#6b7280; --line:#e5e7eb; --chip:#f3f4f6; }
+    *{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans KR',sans-serif}
+    a{color:inherit}
+    .wrap{max-width:900px;margin:0 auto;padding:20px}
+    header{display:flex;gap:10px;align-items:center;justify-content:space-between}
+    .back{border:1px solid var(--line);padding:8px 10px;border-radius:10px;text-decoration:none}
+    .lang{display:flex;gap:8px}
+    .btn{border:1px solid var(--line);background:#fff;padding:8px 12px;border-radius:9999px;cursor:pointer}
+    .btn.active{background:#111827;color:#fff;border-color:#111827}
+    .hero{margin:14px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+    .hero img{width:100%;height:280px;object-fit:cover;background:#fafafa}
+    h1{margin:8px 0 6px;font-size:28px}
+    .meta{color:var(--muted);margin:0 0 10px}
+    .desc{margin:8px 0 12px}
+    .tags{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+    .chip{background:var(--chip);border:1px solid var(--line);padding:2px 8px;border-radius:9999px;font-size:12px}
+    .links{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+    .linkbtn{display:inline-block;border:1px solid var(--line);padding:8px 10px;border-radius:10px;text-decoration:none}
+    footer{margin:24px 0 10px;color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="back" id="backLink" href="#">← 목록으로</a>
+      <div class="lang">
+        <button class="btn active" id="btnKO">KO</button>
+        <button class="btn" id="btnEN">EN</button>
+      </div>
+    </header>
+
+    <div class="hero" id="hero"></div>
+    <h1 id="name"></h1>
+    <p class="meta" id="meta"></p>
+    <p class="desc" id="summary"></p>
+    <div class="tags" id="tags"></div>
+    <div class="links" id="links"></div>
+
+    <footer>© Yangyang Clubs</footer>
+  </div>
+
+  <script>
+    const REPO_BASE = '/yangyang-clubs';
+    // 목록 페이지와 동일 데이터(간단히 복붙). 운영 중엔 data.js로 분리할 수도 있어요.
+    const CLUBS = [
+      {
+        id: 'pooksurfer',
+        name_ko: '푹서퍼 서핑클럽',
+        name_en: 'Pooksurfer Surf Club',
+        members: 58,
+        area_ko: '양양군 전역(서피비치·인구·죽도)',
+        area_en: 'Across Yangyang (Surfyy, Ingu, Jukdo)',
+        summary_ko: '양양의 대표 서핑 커뮤니티. 주간 정기서핑, 바다 러닝, 비치클린과 초보자 환영 세션을 운영합니다.',
+        summary_en: 'Signature surfing community in Yangyang. Weekly surf, ocean runs, beach cleanups, beginner friendly.',
+        tags: ['서핑','바다 러닝','환경수거'],
+        image: `${REPO_BASE}/assets/clubs-outdoor.jpg`,
+        alt_ko: '잔디 위에서 모인 서핑 동아리',
+        alt_en: 'Surf club members gathering on the grass',
+        links: [
+          { label: 'Instagram', href: 'https://instagram.com', target:'_blank' },
+          { label: 'Email', href: 'mailto:hello@example.com' }
+        ]
+      },
+      {
+        id: 'muaz',
+        name_ko: '무아뜨경(코바늘·새활용)',
+        name_en: 'MuaTtGyeong (Crochet & Upcycling)',
+        members: 25,
+        area_ko: '양양읍·손양면',
+        area_en: 'Yangyang-eup · Sonyang-myeon',
+        summary_ko: '코바늘·직조로 생활소품을 만드는 업사이클 동아리. 장날 체험부스를 운영합니다.',
+        summary_en: 'Upcycling club making goods via crochet and weaving. Hands-on booth on market days.',
+        tags: ['업사이클','ESG','핸드메이드'],
+        image: `${REPO_BASE}/assets/muaz-crochet.jpg`,
+        alt_ko: '코바늘 작업 장면',
+        alt_en: 'Crochet working scene',
+        links: [{ label:'Email', href:'mailto:hello@example.com' }]
+      },
+      {
+        id: 'ukulele',
+        name_ko: '아름다운 통기타 세상',
+        name_en: 'Beautiful Guitar World',
+        members: 20,
+        area_ko: '양양군',
+        area_en: 'Yangyang-gun',
+        summary_ko: '지역 공연과 버스킹을 준비하는 기타·우쿨렐레 커뮤니티.',
+        summary_en: 'Guitar & ukulele community performing and busking around town.',
+        tags: ['음악','버스킹'],
+        image: `${REPO_BASE}/assets/ukulele-ensemble.jpg`,
+        alt_ko: '우쿨렐레 합주 모습',
+        alt_en: 'Ukulele ensemble performance',
+        links: []
+      }
+    ];
+
+    const params = new URLSearchParams(location.search);
+    const id = params.get('id');
+    const club = CLUBS.find(c => c.id === id);
+
+    const btnKO = document.getElementById('btnKO');
+    const btnEN = document.getElementById('btnEN');
+    const backLink = document.getElementById('backLink');
+    const hero = document.getElementById('hero');
+    const name = document.getElementById('name');
+    const meta = document.getElementById('meta');
+    const summary = document.getElementById('summary');
+    const tags = document.getElementById('tags');
+    const links = document.getElementById('links');
+
+    let lang = 'ko';
+    btnKO.onclick = () => setLang('ko');
+    btnEN.onclick = () => setLang('en');
+    backLink.href = `${REPO_BASE}/landing/`;
+
+    if(!club){
+      document.body.innerHTML = '<div class="wrap"><p>존재하지 않는 동아리입니다. <a href="'+REPO_BASE+'/landing/">목록으로</a></p></div>';
+    } else {
+      setLang('ko');
+    }
+
+    function setLang(l){
+      lang = l;
+      btnKO.classList.toggle('active', l==='ko');
+      btnEN.classList.toggle('active', l==='en');
+      render();
+    }
+
+    function render(){
+      hero.innerHTML = `<img src="${club.image}" alt="${lang==='ko' ? club.alt_ko : club.alt_en}">`;
+      name.textContent = lang==='ko' ? club.name_ko : club.name_en;
+      meta.textContent = lang==='ko'
+        ? `${club.members} 명 · ${club.area_ko}`
+        : `${club.members} members · ${club.area_en}`;
+      summary.textContent = lang==='ko' ? club.summary_ko : club.summary_en;
+      tags.innerHTML = club.tags.map(t => `<span class="chip">#${t}</span>`).join('');
+      links.innerHTML = (club.links||[])
+        .map(l => `<a class="linkbtn" href="${l.href}" target="${l.target||''}" rel="noreferrer">${l.label}</a>`)
+        .join('') || '<span class="meta">연락 링크가 없습니다.</span>';
+    }
+  </script>
+</body>
+</html>
