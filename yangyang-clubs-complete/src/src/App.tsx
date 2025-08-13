@@ -5,6 +5,12 @@ import { Search, Globe, MapPin, Users, Filter, Mail, Link as LinkIcon, Instagram
 import { CLUBS, CATEGORIES } from './data/clubs'
 import { EVENTS } from './data/events'
 import { GALLERY } from './data/gallery'
+// GitHub Pages용 정적 자산 경로 헬퍼
+function asset(path: string) {
+  const base = (import.meta as any).env?.BASE_URL || "/";
+  const clean = path.startsWith("/") ? path.slice(1) : path;
+  return `${base}${clean}`;
+}
 
 const t = {
   ko: {
