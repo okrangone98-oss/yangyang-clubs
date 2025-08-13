@@ -6,10 +6,7 @@
   <title>Clubs of Yangyang</title>
   <meta name="description" content="양양의 동아리/커뮤니티를 한 곳에서 찾고 참여하세요. (KR/EN)" />
   <style>
-    :root {
-      --bg:#ffffff; --text:#111827; --muted:#6b7280;
-      --line:#e5e7eb; --brand:#0ea5e9; --chip:#f3f4f6;
-    }
+    :root { --bg:#ffffff; --text:#111827; --muted:#6b7280; --line:#e5e7eb; --brand:#0ea5e9; --chip:#f3f4f6; }
     *{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans KR',sans-serif}
     a{color:inherit}
     .wrap{max-width:1100px;margin:0 auto;padding:24px}
@@ -63,10 +60,8 @@
   </div>
 
   <script>
-    // 이 값은 "리포지토리 이름"입니다. 바꾸지 마세요.
     const REPO_BASE = '/yangyang-clubs';
 
-    // === 데이터(여기만 고치면 콘텐츠가 바뀝니다) ==========================
     const CLUBS = [
       {
         id: 'pooksurfer',
@@ -117,7 +112,6 @@
         links: []
       }
     ];
-    // =====================================================================
 
     const grid = document.getElementById('grid');
     const search = document.getElementById('search');
@@ -129,7 +123,6 @@
     let lang = 'ko';
     btnKO.onclick = () => setLang('ko');
     btnEN.onclick = () => setLang('en');
-
     search.addEventListener('input', render);
 
     function setLang(l) {
@@ -162,6 +155,10 @@
             <p class="desc">${lang==='ko' ? c.summary_ko : c.summary_en}</p>
             <div class="tags">${c.tags.map(t => `<span class="chip">#${t}</span>`).join('')}</div>
             <div class="links">
+              <!-- 여기 추가: 상세 페이지로 이동 -->
+              <a class="linkbtn" href="${REPO_BASE}/landing/club.html?id=${c.id}">
+                ${lang==='ko' ? '자세히 보기' : 'Details'}
+              </a>
               ${(c.links||[]).map(l => `<a class="linkbtn" href="${l.href}" target="${l.target||''}" rel="noreferrer">${l.label}</a>`).join('')}
             </div>
           </div>
@@ -169,8 +166,7 @@
       `).join('');
     }
 
-    setLang('ko'); // 초기 언어
+    setLang('ko');
   </script>
 </body>
 </html>
-
