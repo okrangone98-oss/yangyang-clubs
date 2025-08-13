@@ -1,4 +1,4 @@
-const asset = (file:string) => `${import.meta.env.BASE_URL}assets/${file}`;
+const asset = (file: string) => `${import.meta.env.BASE_URL}assets/${file}`;
 
 export type Club = {
   slug: string;
@@ -9,6 +9,7 @@ export type Club = {
   cover: string;
   desc: { ko: string; en: string };
   links?: { instagram?: string; email?: string };
+  gallery?: string[]; // ← 추가
 };
 
 export const clubs: Club[] = [
@@ -23,7 +24,8 @@ export const clubs: Club[] = [
       ko: "양양의 대표 서핑 커뮤니티. 주간 정기서핑, 바다 러닝, 비치클린과 초보자 환영 세션 운영.",
       en: "Yangyang’s surf community. Weekly sessions, ocean runs, beach clean-ups, beginner-friendly."
     },
-    links: { instagram: "#", email: "yyfarmct@naver.com" }
+    links: { instagram: "#", email: "yyfarmct@naver.com" },
+    gallery: [asset("clubs-outdoor.jpg"), asset("festival-audience.jpg")]
   },
   {
     slug: "muaz-crochet",
@@ -36,7 +38,8 @@ export const clubs: Club[] = [
       ko: "코바늘·직조로 생활소품을 만드는 업사이클 동아리. 장날 체험부스 운영.",
       en: "Upcycling group crafting daily goods with crochet & weaving. Pop-up booth on market days."
     },
-    links: { email: "yyfarmct@naver.com" }
+    links: { email: "yyfarmct@naver.com" },
+    gallery: [asset("muaz-crochet-outdoor.jpg"), asset("sseumim-tea.jpg")]
   },
   {
     slug: "ukulele",
@@ -48,7 +51,8 @@ export const clubs: Club[] = [
     desc: {
       ko: "근린 공원과 마을행사에서 정기 합주와 공연을 진행합니다.",
       en: "Regular ensemble and small gigs at local parks and festivals."
-    }
+    },
+    gallery: [asset("ukulele-ensemble.jpg"), asset("beautiful-guitar-world.jpg")]
   },
   {
     slug: "beautiful-guitar",
@@ -72,8 +76,50 @@ export const clubs: Club[] = [
     desc: {
       ko: "야외 스케치와 전시 프로젝트를 진행합니다.",
       en: "Outdoor sketch sessions and small exhibitions."
-    }
+    },
+    gallery: [asset("drawing-yangyang.jpg"), asset("dure-workshop-2025-07.jpg")]
   }
 ];
 
 export const clubMap = Object.fromEntries(clubs.map(c=>[c.slug, c])) as Record<string, Club>;
+
+export type BoardItem = { title_ko: string; title_en: string; date: string; href?: string };
+
+export const notices: BoardItem[] = [
+  { title_ko: "2025 두레동아리 신규 가입 안내", title_en: "2025 New Club Enrollment", date: "2025-08-15" },
+  { title_ko: "안전한 모임 가이드 배포",       title_en: "Safety Guide Released",   date: "2025-08-05" },
+];
+
+export const events: BoardItem[] = [
+  { title_ko: "무아뜨경 업사이클 원데이 클래스", title_en: "Muaz Upcycling One-day Class", date: "2025-08-20" },
+  { title_ko: "우쿨렐레 버스킹(양양읍 광장)",      title_en: "Ukulele Busking (Town Square)", date: "2025-08-24" },
+  { title_ko: "야양그림 야외 스케치",             title_en: "Outdoor Sketch Meetup",        date: "2025-08-31" },
+];
+
+export const heroSlides = [
+  {
+    image: asset("festival-audience.jpg"),
+    title_ko: "양양 동아리, 함께 만드는 즐거운 일상",
+    title_en: "Clubs of Yangyang, Joyful Daily Life",
+    subtitle_ko: "주간 모임·야외행사·공연·체험부스까지! 참여할 커뮤니티가 기다리고 있어요.",
+    subtitle_en: "Weekly meetups, outdoor events, gigs and pop-ups. Join a welcoming community.",
+    ctaHref: "#/club/pooksurfer",
+    ctaLabel_ko: "서핑클럽 보기", ctaLabel_en: "View Surf Club"
+  },
+  {
+    image: asset("dure-workshop-2025-07.jpg"),
+    title_ko: "업사이클·핸드메이드 워크숍",
+    title_en: "Upcycling / Handmade Workshops",
+    subtitle_ko: "쓰밈·무아뜨경과 함께 만드는 생활소품",
+    subtitle_en: "Create daily goods with local makers.",
+    ctaHref: "#/club/muaz-crochet",
+  },
+  {
+    image: asset("clubs-outdoor.jpg"),
+    title_ko: "야외에서 만나는 커뮤니티",
+    title_en: "Outdoor Communities",
+    subtitle_ko: "서피비치·인구·죽도 등 양양 전역에서!",
+    subtitle_en: "Across Surfyy, Ingwoo, Jukdo and beyond.",
+    ctaHref: "#/club/drawing-yangyang",
+  }
+];
