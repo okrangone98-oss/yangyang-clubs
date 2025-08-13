@@ -32,7 +32,7 @@ export const clubs: Club[] = [
     name: { ko: "무아뜨경(코바늘·새활용)", en: "Muaz Crochet (Upcycle)" },
     area: { ko: "양양에서 속초까지", en: "Yangyang-eup · Sonyang-myeon" },
     members: 3,
-    tags: ["업사이클","ESG","핸드메이드"],
+    tags: ["함께해요 의기양양 동아리"],
     cover: asset("muaz-crochet-outdoor.jpg"),
     desc: {
       ko: "코바늘·직조로 생활소품을 만드는 업사이클 동아리. 장날 체험부스 운영.",
@@ -116,7 +116,7 @@ export const heroSlides = [
   },
   {
     image: asset("clubs-outdoor.jpg"),
-    title_ko: "야외에서 만나는 커뮤니티",
+    title_ko: "양양에서 만나는 커뮤니티",
     title_en: "Outdoor Communities",
     subtitle_ko: "서피비치·인구·죽도 등 양양 전역에서!",
     subtitle_en: "Across Surfyy, Ingwoo, Jukdo and beyond.",
