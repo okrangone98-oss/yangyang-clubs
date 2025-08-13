@@ -15,17 +15,22 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  WORKDIR: yangyang-clubs-complete   # ← 프로젝트가 들어있는 폴더명
+  WORKDIR: yangyang-clubs-complete
 
 jobs:
   build:
-    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
-        with:
-          node-version: 20
+        with: { node-version: 20 }
+      - name: Install
+        working-directory: ./${{ env.WORKDIR }}
+        run: npm ci || npm i
+      - name: Build
+        working-directory: ./${{ env.WORKDIR }}
+        run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: ./${{ env.WORKDIR }}/dist }
 
       - name: Install dependencies
         working-directory: ./${{ env.WORKDIR }}     # ← 하위 폴더에서 실행
