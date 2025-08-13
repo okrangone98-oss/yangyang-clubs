@@ -1,63 +1,85 @@
-// yangyang-clubs-complete/src/data/clubs.ts
+// src/data/clubs.ts
 export type Club = {
-  id: string
-  name_ko: string
-  name_en: string
-  members: number
-  area_ko: string
-  area_en: string
-  summary_ko: string
-  summary_en: string
-  tags: string[]
-  image: string // public/assets 경로 기준
-  links?: { label: string; href: string }[]
-}
+  slug: string;
+  name: { ko: string; en: string };
+  members?: string;
+  area?: string;
+  tags: string[];
+  image: string;            // /assets/파일명.jpg
+  summary: { ko: string; en: string };
+};
 
-export const clubs: Club[] = [
+export const CLUBS: Club[] = [
   {
-    id: 'pooksurfer',
-    name_ko: '푹서퍼 서핑클럽',
-    name_en: 'Pooksurfer Surf Club',
-    members: 58,
-    area_ko: '양양군 전역(서피비치·인구·죽도)',
-    area_en: 'Across Yangyang (Surfyy, Ingu, Jukdo)',
-    summary_ko:
-      '양양의 대표 서핑 커뮤니티. 주간 정기서핑, 바다 러닝, 비치클린과 초보자 환영 세션을 운영합니다.',
-    summary_en:
-      'Signature surfing community in Yangyang. Weekly surf sessions, ocean runs, beach cleanups, and a warm welcome for beginners.',
-    tags: ['서핑', '바다 러닝', '환경수거'],
-    image: '/assets/clubs-outdoor.jpg',
-    links: [
-      { label: 'Instagram', href: 'https://instagram.com' },
-      { label: 'Email', href: 'mailto:hello@example.com' },
-    ],
+    slug: "drawing-yangyang",
+    name: { ko: "야양그림", en: "Drawing Yangyang" },
+    members: "25+",
+    area: "구석구석 양양",
+    tags: ["드로잉", "전시", "야외부스"],
+    image: "/assets/drawing-yangyang.jpg",
+    summary: {
+      ko: "양양 드로잉/그림 커뮤니티. 장날 체험부스와 전시/모임을 진행합니다.",
+      en: "Drawing community in Yangyang. Pop-up booths and casual meetups."
+    }
   },
   {
-    id: 'muaz-crochet',
-    name_ko: '무아뜨경(코바늘·새활용)',
-    name_en: 'MuaTtGyeong (Crochet & Upcycling)',
-    members: 25,
-    area_ko: '양양읍·손양면',
-    area_en: 'Yangyang-eup · Sonyang-myeon',
-    summary_ko:
-      '코바늘·직조로 생활소품을 만드는 업사이클 동아리. 장날 체험부스를 운영합니다.',
-    summary_en:
-      'Upcycling club making everyday items via crochet and weaving. Hosts hands-on booths on market days.',
-    tags: ['업사이클', 'ESG', '핸드메이드'],
-    image: '/assets/muaz-crochet.jpg',
-    links: [{ label: 'Email', href: 'mailto:hello@example.com' }],
+    slug: "ukulele-ensemble",
+    name: { ko: "우쿨렐레 합주", en: "Ukulele Ensemble" },
+    members: "20+",
+    area: "양양읍",
+    tags: ["음악", "공연", "합주"],
+    image: "/assets/ukulele-ensemble.jpg",
+    summary: {
+      ko: "우쿨렐레로 함께 연주하고 공연합니다.",
+      en: "We play ukulele together and sometimes perform."
+    }
   },
   {
-    id: 'ukulele',
-    name_ko: '아름다운 통기타 세상',
-    name_en: 'Beautiful Guitar World',
-    members: 20,
-    area_ko: '양양군',
-    area_en: 'Yangyang-gun',
-    summary_ko: '지역 공연과 버스킹을 준비하는 기타·우쿨렐레 커뮤니티.',
-    summary_en:
-      'Guitar & ukulele community performing and busking around town.',
-    tags: ['음악', '버스킹'],
-    image: '/assets/beautiful-guitar-world.jpg',
+    slug: "beautiful-guitar-world",
+    name: { ko: "아름다운 통기타 세상", en: "Beautiful Guitar World" },
+    members: "15+",
+    area: "양양군 전역",
+    tags: ["음악", "기타", "공연"],
+    image: "/assets/beautiful-guitar-world.jpg",
+    summary: {
+      ko: "기타를 좋아하는 사람들의 모임. 초보자도 환영!",
+      en: "Guitar lovers’ group. Beginners welcome!"
+    }
   },
-]
+  {
+    slug: "muaz-crochet",
+    name: { ko: "무아뜨경(코바늘·새활용)", en: "Muaz Crochet (Upcycling)" },
+    members: "25+",
+    area: "양양읍·손양면",
+    tags: ["업사이클", "핸드메이드", "ESG"],
+    image: "/assets/muaz-crochet-outdoor.jpg",
+    summary: {
+      ko: "코바늘과 직조로 생활소품을 만드는 업사이클 동아리.",
+      en: "Upcycling club making daily goods with crochet & weaving."
+    }
+  },
+  {
+    slug: "sseumim-sewing",
+    name: { ko: "스밈(바느질·재봉)", en: "Sseumim Sewing" },
+    members: "20+",
+    area: "양양읍",
+    tags: ["핸드메이드", "교육", "수공예"],
+    image: "/assets/sseumim-sewing.jpg",
+    summary: {
+      ko: "바느질/재봉 스터디와 소품 만들기 워크숍.",
+      en: "Sewing study & small goods workshops."
+    }
+  },
+  {
+    slug: "sseumim-tea",
+    name: { ko: "스밈(티타임)", en: "Sseumim Tea" },
+    members: "10+",
+    area: "양양읍",
+    tags: ["티타임", "소모임", "휴식"],
+    image: "/assets/sseumim-tea.jpg",
+    summary: {
+      ko: "차 마시며 담소 나누는 편안한 소모임.",
+      en: "Casual tea time & chat."
+    }
+  }
+];
