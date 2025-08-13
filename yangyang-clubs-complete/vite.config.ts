@@ -1,5 +1,5 @@
 
-// vite.config.ts
+base: '/yangyang-clubs/
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
