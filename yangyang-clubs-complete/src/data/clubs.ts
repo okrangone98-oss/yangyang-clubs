@@ -101,7 +101,7 @@ export const heroSlides = [
     image: asset("festival-audience.jpg"),
     title_ko: "양양 동아리, 함께 만드는 즐거운 일상",
     title_en: "Clubs of Yangyang, Joyful Daily Life",
-    subtitle_ko: "주간 모임·야외행사·공연·체험부스까지! 참여할 커뮤니티가 기다리고 있어요.",
+    subtitle_ko: "당신과 함께 할 양양 공동체",
     subtitle_en: "Weekly meetups, outdoor events, gigs and pop-ups. Join a welcoming community.",
     ctaHref: "#/club/pooksurfer",
     ctaLabel_ko: "서핑클럽 보기", ctaLabel_en: "View Surf Club"
@@ -110,7 +110,7 @@ export const heroSlides = [
     image: asset("dure-workshop-2025-07.jpg"),
     title_ko: "업사이클·핸드메이드 워크숍",
     title_en: "Upcycling / Handmade Workshops",
-    subtitle_ko: "쓰밈·무아뜨경과 함께 만드는 생활소품",
+    subtitle_ko: "함께 만드는 활기찬 양양",
     subtitle_en: "Create daily goods with local makers.",
     ctaHref: "#/club/muaz-crochet",
   },
@@ -118,7 +118,7 @@ export const heroSlides = [
     image: asset("clubs-outdoor.jpg"),
     title_ko: "양양에서 만나는 커뮤니티",
     title_en: "Outdoor Communities",
-    subtitle_ko: "서피비치·인구·죽도 등 양양 전역에서!",
+    subtitle_ko: "양양을 넘어 함께해요!",
     subtitle_en: "Across Surfyy, Ingwoo, Jukdo and beyond.",
     ctaHref: "#/club/drawing-yangyang",
   }
